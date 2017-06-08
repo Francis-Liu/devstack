@@ -2279,12 +2279,7 @@ function python_version {
 # Service wrapper to restart services
 # restart_service service-name
 function restart_service {
-    if [ -x /bin/systemctl ]; then
-        sudo /bin/systemctl restart $1
-    else
-        sudo service $1 restart
-    fi
-
+    sudo service $1 restart
 }
 
 # Only change permissions of a file or directory if it is not on an
@@ -2302,32 +2297,20 @@ function safe_chown {
 # Service wrapper to start services
 # start_service service-name
 function start_service {
-    if [ -x /bin/systemctl ]; then
-        sudo /bin/systemctl start $1
-    else
-        sudo service $1 start
-    fi
+    sudo service $1 start
 }
 
 # Service wrapper to stop services
 # stop_service service-name
 function stop_service {
-    if [ -x /bin/systemctl ]; then
-        sudo /bin/systemctl stop $1
-    else
-        sudo service $1 stop
-    fi
+    sudo service $1 stop
 }
 
 # Service wrapper to reload services
 # If the service was not in running state it will start it
 # reload_service service-name
 function reload_service {
-    if [ -x /bin/systemctl ]; then
-        sudo /bin/systemctl reload-or-restart $1
-    else
-        sudo service $1 reload
-    fi
+    sudo service $1 reload
 }
 
 # Test with a finite retry loop.
